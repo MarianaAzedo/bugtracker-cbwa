@@ -28,7 +28,7 @@ app.get('/issues/:slug', issues.getIssue); // get issues by name
 app.get('/projects/:slug/issues', issues.getByProject); //get issues by project
 app.post('/projects/:slugtitle/issues', issues.postController); //add issues
 
-//Comments **not working
+//Comments
 app.post('/issues/:slugtitle/comments', comments.postComment); // add comments
 app.get('/issues/:slugtitle/comments', comments.getAll); // get all comments
 app.get('/issues/:slugtitle/comments/:commentId', comments.getComment); // get comments by ID
