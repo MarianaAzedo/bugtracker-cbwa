@@ -12,6 +12,7 @@ module.exports = () => {
         return oneSlug;
     };
 
+    //function to add the task
     const add = async (slug, name, description) => {
         const results = await db.add(COLLECTION, {
             slug: slug,

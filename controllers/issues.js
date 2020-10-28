@@ -9,11 +9,11 @@ module.exports = () => {
     const getIssue = async (req, res) => {
         res.json(await issues.get(req.params.slug));
     };
-    // function (route) to get the issues by Project ** is not working
+    // function (route) to get the issues by Project
     const getByProject = async (req, res) => {
         res.json(await issues.getByProject(req.params.slug));
     };
-
+    
     const postController = async (req, res) => {
         let slugtitle = req.params.slugtitle;
         let title = req.body.title;

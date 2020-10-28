@@ -2,6 +2,7 @@ const db = require('../db')();
 const ObjectID = require('mongodb').ObjectID;
 const COLLECTION = 'issues';
 
+//function to get all the comments
 module.exports = () => {
     const getAllComments = async (slugtitle) => {
         const PIPELINE = [
@@ -17,6 +18,7 @@ module.exports = () => {
           return getComment;
         };
 
+        //function to get one comment by ID
         const getOneComment = async (commentId) =>{
             const PIPELINE = [
                 {$match: {'comments._id': ObjectID(commentId)}},
@@ -36,6 +38,7 @@ module.exports = () => {
         };
 
 
+    // function to add comment   
     const addComment = async (slugtitle, text, author) => {
         const PIPELINE = [{slugtitle: slugtitle}, {$push:{comments:{
             _id: new ObjectID(),

@@ -20,6 +20,7 @@ module.exports = () => {
         return byProject;
     };
 
+    //function to add a new slug
     const add = async (slugtitle, title, description, status, project_id) => {
         const counter = await db.count(COLLECTION);
         const results = await db.add(COLLECTION, {

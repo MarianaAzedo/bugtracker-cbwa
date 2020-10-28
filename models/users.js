@@ -12,6 +12,7 @@ module.exports = () => {
         return oneUser;
     };
 
+    //function to add new user
     const add = async (name, email, usertype, key) => {
         const results = await db.add(COLLECTION, {
             name: name,

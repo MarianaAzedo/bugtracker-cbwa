@@ -10,6 +10,7 @@ module.exports = () => {
         res.json(await users.get(req.params.email));
     };
 
+    // function (route) to add new user
     const postController = async (req, res) => {
         let name = req.body.name;
         let email = req.body.email;

@@ -5,11 +5,11 @@ module.exports = () => {
     const getUserController = async (req, res) => {
         res.json(await projects.get());
     };
-    // function (route) to get the users by slug
+    // function (route) to get the users by project
     const getSlug= async (req, res) => {
         res.json(await projects.get(req.params.slug));
     };
-
+    // function (route) to add a new project
     const postController = async (req, res) => {
         let slug = req.body.slug;
         let name = req.body.name;
