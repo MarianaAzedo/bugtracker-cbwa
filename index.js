@@ -33,6 +33,10 @@ app.post('/issues/:slugtitle/comments', comments.postComment); // add comments
 app.get('/issues/:slugtitle/comments', comments.getAll); // get all comments
 app.get('/issues/:slugtitle/comments/:commentId', comments.getComment); // get comments by ID
 
+app.get('/', (req, res) => {
+    res.send('Welcome to CBWA 1');
+});
+
 app.listen(port, hostname, ()=>{
     console.log(`App listening at http://${hostname}:${port}`);
 }); //where the api is running
