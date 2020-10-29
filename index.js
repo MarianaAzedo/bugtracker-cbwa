@@ -2,12 +2,43 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = (module.exports = express());
 const users = require('./controllers/users')();
+const usersModel = require('./models/users')();
 const projects = require('./controllers/projects')();
 const issues = require('./controllers/issues')();
 const comments = require('./controllers/comments')();
 
 const port = process.env.PORT || 3000;
 const hostname = '0.0.0.0';
+
+//test the key
+app.use(async (req, res, next) => {
+    const FailedMessage = {
+        error: 'Failed Authentication',
+        message: 'not autorized',
+        code: 'xxx'
+    };
+
+    const suppliedkey = req.headers['x-api-key'];
+    const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+    if (!suppliedkey) {
+        console.log('Failed authentication, no key suplied');
+        new Date(), clientIp;
+        FailedMessage.code = '01';
+        return res.status(401).json(FailedMessage);
+    };
+
+    const user = await usersModel.getKey(suppliedkey);
+
+    if (!user) {
+        FailedMessage.code = '02';
+        return res.status(401).json(FailedMessage);
+    };
+
+    next();
+
+});
+
 
 app.use(bodyParser.json());
 
@@ -37,6 +68,13 @@ app.get('/', (req, res) => {
     res.send('Welcome to CBWA 1');
 });
 
-app.listen(port, hostname, ()=>{
+app.use((req, res) => {
+    res.status(404).json({
+        error: 404,
+        message: 'not found',
+    });
+});
+
+app.listen(port, hostname, () => {
     console.log(`App listening at http://${hostname}:${port}`);
 }); //where the api is running
