@@ -13,7 +13,7 @@ module.exports = () => {
         return oneIssue;
     };
 
-    //function to get the issues by project ** is not working
+    //function to get the issues by project
     const getByProject = async (slugtitle) =>{
         let expression = new RegExp(slugtitle);
         const byProject = await db.get(COLLECTION, {slugtitle: expression});
