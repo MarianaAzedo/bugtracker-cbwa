@@ -3,29 +3,55 @@ const COLLECTION = 'projects';
 
 //function to get the task
 module.exports = () => {
-    const get = async (slug = null) => {
-        if (!slug) {
-            const everySlug = await db.get(COLLECTION);
-            return everySlug;
-        }
-        const oneSlug = await db.get(COLLECTION, { slug });
-        return oneSlug;
-    };
+  const get = async (slug = null) => {
+    try {
+      if (!slug) {
+        const everySlug = await db.get(COLLECTION);
+        return { everySlug };
+      }
+      const everySlug = await db.get(COLLECTION, { slug });
+      return { everySlug };
+    } catch (err) {
+      return {
+        err,
+      };
+    }
+  };
 
-    //function to add the task
-    const add = async (slug, name, description) => {
-        const results = await db.add(COLLECTION, {
-            slug: slug,
-            name: name,
-            description: description,
-        });
+  //function to add the task
+  const add = async (slug, name, description) => {
+    //I should not be able to add any item without all the fields
+    if (!slug || !name || !description) {
+      return {
+        err: 'one of the fields are empty',
+      };
+    }
 
-        return results.result;
-    };
+    try {
+      //I should not be able to duplicate projects based on SLUG
+      const everySlug = await db.get(COLLECTION, { slug });
+      if (everySlug.length > 0) {
+        return {
+          result: 'Project already exist',
+        };
+      }
 
-    return {
-        get,
-        add,
-    };
+      const results = await db.add(COLLECTION, {
+        slug: slug,
+        name: name,
+        description: description,
+      });
 
+      return results.result;
+    } catch (err) {
+      return {
+        err,
+      };
+    }
+  };
+
+  return {
+    get,
+    add,
+  };
 };

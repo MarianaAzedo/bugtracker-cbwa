@@ -12,33 +12,32 @@ const hostname = '0.0.0.0';
 
 //test the key
 app.use(async (req, res, next) => {
-    const FailedMessage = {
-        error: 'Failed Authentication',
-        message: 'not autorized',
-        code: 'xxx'
-    };
+  const FailedMessage = {
+    error: 'Failed Authentication',
+    message: 'not autorized',
+    code: 'xxx',
+  };
 
-    const suppliedkey = req.headers['x-api-key'];
-    const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  const suppliedkey = req.headers['x-api-key'];
+  const clientIp =
+    req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-    if (!suppliedkey) {
-        console.log('Failed authentication, no key suplied');
-        new Date(), clientIp;
-        FailedMessage.code = '01';
-        return res.status(401).json(FailedMessage);
-    };
+  if (!suppliedkey) {
+    console.log('Failed authentication, no key suplied');
+    new Date(), clientIp;
+    FailedMessage.code = '01';
+    return res.status(401).json(FailedMessage);
+  }
 
-    const user = await usersModel.getKey(suppliedkey);
+  const user = await usersModel.getKey(suppliedkey);
 
-    if (!user) {
-        FailedMessage.code = '02';
-        return res.status(401).json(FailedMessage);
-    };
+  if (!user) {
+    FailedMessage.code = '02';
+    return res.status(401).json(FailedMessage);
+  }
 
-    next();
-
+  next();
 });
-
 
 app.use(bodyParser.json());
 
@@ -52,9 +51,8 @@ app.get('/projects', projects.getUserController); //get projects
 app.get('/projects/:slug', projects.getSlug); // get projects by name of the project
 app.post('/projects', projects.postController); //add projects
 
-
 //issues
-app.get('/issues', issues.getUserController); // get issues 
+app.get('/issues', issues.getUserController); // get issues
 app.get('/issues/:slug', issues.getIssue); // get issues by name
 app.get('/projects/:slug/issues', issues.getByProject); //get issues by project
 app.post('/projects/:slugtitle/issues', issues.postController); //add issues
@@ -65,16 +63,16 @@ app.get('/issues/:slugtitle/comments', comments.getAll); // get all comments
 app.get('/issues/:slugtitle/comments/:commentId', comments.getComment); // get comments by ID
 
 app.get('/', (req, res) => {
-    res.send('Welcome to CBWA 1');
+  res.send('Welcome to CBWA 1');
 });
 
 app.use((req, res) => {
-    res.status(404).json({
-        error: 404,
-        message: 'not found',
-    });
+  res.status(404).json({
+    error: 404,
+    message: '404: not found',
+  });
 });
 
 app.listen(port, hostname, () => {
-    console.log(`App listening at http://${hostname}:${port}`);
+  console.log(`App listening at http://${hostname}:${port}`);
 }); //where the api is running
