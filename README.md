@@ -35,69 +35,54 @@ Run npm start, it will open the browser when ready.
 
 Endpoint:
 
-- users
-
-get all the users /users
-
-get users by email /users/:email
-
-add (post) new user /users
-
-example:
-
-{
-
-"\_id": "",
-
-"name": "Mariana",
-
-"email": "mari.azedo.ma@gmail.com",
-
-"usertype": "admin",
-
-"key": "newpassword"
-
-},
-
-- projects
-
-get all projects /projects
-
-get projects by name of the project get /projects/:slug
-
-post (add) projects /projects
+- get all the users:
+  `/users`
+- get users by email:
+  `/users/:email`
+- add (post) new user:
+  `/users`
 
 example:
 
-{
+`{`
+`"id": "",`
+`"name": "insert user name",`
+`"email": "insert email",`
+`"usertype": "admin",`
+`"key": "insert password"`
+`}`
 
-"\_id": "",
+- get all projects
+  `/projects`
+- get projects by name of the project
+  `/projects/:slug`
+- post (add) projects
+  `/projects`
 
-"slug": "BUG",
+example:
 
-"name": "Bugtrack",
+`{`
+`"\_id": "",`
+`"slug": "BUG",`
+`"name": "Bugtrack",`
+`"description": "New Bugtrack CA1 CBWA"`
+`}`
 
-"description": "New Bugtrack CA1 CBWA"
+- get issues
+  `/issues`
+- get issues by name
+  `/issues/:slug`
+- get issues by project
+  `/projects/:slug/issues`
+- add (post) issues
+  `/projects/:slugtitle/issues`
 
-},
-
-- issues
-
-get issues /issues
-
-get issues by name /issues/:slug
-
-get issues by project /projects/:slug/issues
-
-add (post) issues /projects/:slugtitle/issues
-
-- Comments
-
-add (post) comments /issues/:slugtitle/comments
-
-get all comments /issues/:slugtitle/comments
-
-get comments by ID /issues/:slugtitle/comments/:commentId
+- add (post) comments
+  `/issues/:slugtitle/comments`
+- get all comments
+  `/issues/:slugtitle/comments`
+- get comments by ID
+  `/issues/:slugtitle/comments/:commentId`
 
 ## Changelog
 

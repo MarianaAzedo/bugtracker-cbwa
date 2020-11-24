@@ -21,6 +21,8 @@ module.exports = () => {
 
   //function to add new user
   const add = async (name, email, usertype, key) => {
+    const UserEmail = process.env.EMAIL;
+    const password = process.env.PASSWORD;
     //email notification
     let transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -28,8 +30,8 @@ module.exports = () => {
       port: 465,
       secure: true, // true for 465, false for other ports
       auth: {
-        user: 'maritest895@gmail.com', // generated ethereal user
-        pass: 'pass1234!', // generated ethereal password
+        user: UserEmail, // generated ethereal user
+        pass: password, // generated ethereal password
       },
       tls: {
         rejectUnauthorized: false,
