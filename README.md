@@ -5,7 +5,6 @@
 ## Table of contents
 
 - [General info](#general-info)
-- [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Setup](#setup)
 - [Example usage](#Example_usage)
@@ -21,9 +20,9 @@ You also can add a new project by Slug, project name and description. Find the p
 
 ## Technologies
 
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
+- Body-parser - ^1.19.0
+- Express - ^4.17.1
+- Mongodb - ^3.6.2
 
 ## Setup
 
