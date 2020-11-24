@@ -1,5 +1,6 @@
 const db = require('../db')();
 const COLLECTION = 'users';
+const nodemailer = require('nodemailer');
 
 //function to return only the registered email data
 module.exports = () => {
@@ -20,6 +21,30 @@ module.exports = () => {
 
   //function to add new user
   const add = async (name, email, usertype, key) => {
+    //email notification
+    let transporter = nodemailer.createTransport({
+      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true, // true for 465, false for other ports
+      auth: {
+        user: 'maritest895@gmail.com', // generated ethereal user
+        pass: 'pass1234!', // generated ethereal password
+      },
+      tls: {
+        rejectUnauthorized: false,
+      },
+    });
+
+    // send mail with defined transport object
+    let info = await transporter.sendMail({
+      from: 'bugtracker@bugtracker.com', // sender address
+      to: email, // list of receivers
+      subject: 'Hello ✔' + name, // Subject line
+      text: 'Welcome to Bugtracker CBWA', // plain text body
+      html: '<b>You were registered in Bugtracker CBWA</b>', // html body
+    });
+
     //I should not be able to add any item without all the fields
     if (!name || !email || !usertype || !key) {
       return {
@@ -40,7 +65,7 @@ module.exports = () => {
         usertype: usertype,
         key: key,
       });
-      return results.result;
+      return { results };
     } catch (err) {
       return {
         err,

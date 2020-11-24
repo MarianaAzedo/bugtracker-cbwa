@@ -32,13 +32,13 @@ module.exports = () => {
     let usertype = req.body.usertype;
     let key = req.body.key;
 
-    const { result, err } = await users.add(name, email, usertype, key);
+    const { results, err } = await users.add(name, email, usertype, key);
     if (err) {
       res.status(500).json({
         err,
       });
     }
-    res.json(result);
+    res.json(results);
   };
 
   return {

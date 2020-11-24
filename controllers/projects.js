@@ -27,13 +27,13 @@ module.exports = () => {
     let name = req.body.name;
     let description = req.body.description;
 
-    const { result, err } = await projects.add(slug, name, description);
+    const { results, err } = await projects.add(slug, name, description);
     if (err) {
       res.status(500).json({
         err,
       });
     }
-    res.json(result);
+    res.json(results);
   };
 
   return {

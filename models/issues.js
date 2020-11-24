@@ -50,7 +50,7 @@ module.exports = () => {
         project_id: new ObjectID(project_id),
         comments: [],
       });
-      return results.result;
+      return results;
     } catch (err) {
       return {
         err,

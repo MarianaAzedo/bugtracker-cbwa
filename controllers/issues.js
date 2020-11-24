@@ -38,7 +38,7 @@ module.exports = () => {
     let description = req.body.description;
     let project_id = req.body.project_id;
 
-    const { result, err } = await issues.add(
+    const { results, err } = await issues.add(
       slugtitle,
       title,
       description,
@@ -49,7 +49,7 @@ module.exports = () => {
         err,
       });
     }
-    res.json(result);
+    res.json(results);
   };
 
   return {

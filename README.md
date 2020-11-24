@@ -20,23 +20,27 @@ You also can add a new project by Slug, project name and description. Find the p
 
 ## Technologies
 
-- Body-parser - ^1.19.0
-- Express - ^4.17.1
-- Mongodb - ^3.6.2
+- Body-parser - 1.19.0
+- ExpressJS - 4.17.1
+- MongoDB - 3.6.2
 
 ## Setup
 
-Describe how to install / setup your local environement / add link to demo version.
+Clone this repository using git clone https://github.com/MarianaAzedo/bugtracker-cbwa.
+Move to the appropriate directory: cd bugtracker-cbwa.
+Run npm install to install dependencies.
+Run npm start, it will open the browser when ready.
 
 ## Example_usage
 
-Examples of usage:
+Endpoint:
 
 - users
 
-app.get('/users', users.getUserController); //get all users
-app.get('/users/:email', users.getUserEmail); //get by email
-app.post('/users', users.postController); //add new user
+get all the users /users
+get users by email /users/:email
+add (post) new user /users
+
 example:
 {
 "\_id": "",
@@ -48,9 +52,10 @@ example:
 
 - projects
 
-app.get('/projects', projects.getUserController); //get projects
-app.get('/projects/:slug', projects.getSlug); // get projects by name of the project
-app.post('/projects', projects.postController); //add projects
+get all projects /projects
+get projects by name of the project get /projects/:slug
+post (add) projects /projects
+
 example:
 {
 "\_id": "",
@@ -61,35 +66,34 @@ example:
 
 - issues
 
-app.get('/issues', issues.getUserController); // get issues
-app.get('/issues/:slug', issues.getIssue); // get issues by name
-app.get('/projects/:slug/issues', issues.getByProject); //get issues by project
-app.post('/projects/:slugtitle/issues', issues.postController); //add issues
+get issues /issues
+get issues by name /issues/:slug
+get issues by project /projects/:slug/issues
+add (post) issues /projects/:slugtitle/issues
 
 - Comments
 
-app.post('/issues/:slugtitle/comments', comments.postComment); // add comments
-app.get('/issues/:slugtitle/comments', comments.getAll); // get all comments
-app.get('/issues/:slugtitle/comments/:commentId', comments.getComment); // get comments by ID
+add (post) comments /issues/:slugtitle/comments
+get all comments /issues/:slugtitle/comments
+get comments by ID /issues/:slugtitle/comments/:commentId
 
 ## Changelog
 
-- Oct 29, 2020 - create user key.
+- Oct 24, 2020 - start project CBWA
+- Oct 29, 2020 - create user key
 - Nov 16, 2020 - reject
-- Nov 24, 2020 - not be able to duplicate users (based on email),
-  not be able to duplicate projects based on SLUG, not be able to add any item without all the fields.
+- Nov 23, 2020 - not be able to duplicate users (based on email), not be able to duplicate projects based on SLUG, not be able to add any item without all the fields.
+- Nov 24, 2020 - Docker-ise the application, Add in email notifications.
 
 ## Roadmap
 
 Project is: _in progress_.
 
 - Start working on frontend
-- Docker-ise the application
 - Start unit testing
 - Add in issue linking (blocking, blocks, relates to, etc)
 - Add in due dates
-- Add Watchers of an issue (who wants updates on the status of issues/projects)
-- Add in email notifications
+- Add Watchers of an issue
 
 ## Author_info
 

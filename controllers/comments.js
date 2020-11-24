@@ -29,13 +29,13 @@ module.exports = () => {
     let text = req.body.text;
     let author = req.body.author;
 
-    const { result, err } = await comments.addComment(slugtitle, text, author);
+    const { results, err } = await comments.addComment(slugtitle, text, author);
     if (err) {
       res.status(500).json({
         err,
       });
     }
-    res.json(result);
+    res.json(results);
   };
 
   return {

@@ -42,7 +42,7 @@ module.exports = () => {
         description: description,
       });
 
-      return results.result;
+      return { results };
     } catch (err) {
       return {
         err,

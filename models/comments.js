@@ -78,7 +78,7 @@ module.exports = () => {
       ];
       const results = await db.update(COLLECTION, PIPELINE);
 
-      return results.result;
+      return results;
     } catch (err) {
       return {
         err,
