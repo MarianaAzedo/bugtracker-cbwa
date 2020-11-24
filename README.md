@@ -38,43 +38,65 @@ Endpoint:
 - users
 
 get all the users /users
+
 get users by email /users/:email
+
 add (post) new user /users
 
 example:
+
 {
+
 "\_id": "",
+
 "name": "Mariana",
+
 "email": "mari.azedo.ma@gmail.com",
+
 "usertype": "admin",
+
 "key": "newpassword"
+
 },
 
 - projects
 
 get all projects /projects
+
 get projects by name of the project get /projects/:slug
+
 post (add) projects /projects
 
 example:
+
 {
+
 "\_id": "",
+
 "slug": "BUG",
+
 "name": "Bugtrack",
+
 "description": "New Bugtrack CA1 CBWA"
+
 },
 
 - issues
 
 get issues /issues
+
 get issues by name /issues/:slug
+
 get issues by project /projects/:slug/issues
+
 add (post) issues /projects/:slugtitle/issues
 
 - Comments
 
 add (post) comments /issues/:slugtitle/comments
+
 get all comments /issues/:slugtitle/comments
+
 get comments by ID /issues/:slugtitle/comments/:commentId
 
 ## Changelog
