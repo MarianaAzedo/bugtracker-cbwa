@@ -14,9 +14,7 @@
 
 ## General info
 
-This project helps you to how to organize your stakeholders allowing you to add new user, by name, e-mail, user-type and key. Is it possible to get all the users posted by e-mail or Name.
-
-You also can add a new project by Slug, project name and description. Find the projects by Slug, name, user, description and most important add a comment.
+This project is an assignment to Cloud Based Web Applications.
 
 ## Technologies
 
@@ -104,4 +102,4 @@ Project is: _in progress_.
 
 ## Author_info
 
-Created by Mariana Azedo 2020095
+Created by [@marianaazedo] - feel free to contact me!
